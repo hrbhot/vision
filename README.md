@@ -1,8 +1,6 @@
 # vision
 vision
 
-test
-
 -----
 ## Ops
 
