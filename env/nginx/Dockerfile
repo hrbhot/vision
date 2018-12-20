@@ -1,5 +1,5 @@
 # 8 MB
-FROM nginx:alpine:1.15.7
+FROM nginx:alpine
 
 RUN addgroup -S www \
     && adduser -D -S -h /home/www -s /sbin/nologin -G www www \
