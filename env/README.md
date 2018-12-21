@@ -1,10 +1,4 @@
 # vision
-vision
-
-<<<<<<< HEAD
-
-=======
->>>>>>> upstream/develop
 -----
 ## Ops
 
@@ -80,6 +74,3 @@ docker-compose up -d
     ├── supervisord.conf
     └── uwsgi.ini
 ```
-=======
->>>>>>> upstream/develop
-

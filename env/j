@@ -1,0 +1,2 @@
+#!/bin/bash
+docker run -d --rm -p 8090:8080 -p 50000:50000 -v "$PWD/jenkins":/var/jenkins_home jenkins/jenkins:lts
