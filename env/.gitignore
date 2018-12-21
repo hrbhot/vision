@@ -1,5 +1,5 @@
 # linux
 .*.swp
 jenkins/
-#mongo/
-#mysql/
+mongo/
+mysql/
