@@ -54,7 +54,6 @@ File structure
 ├── nodejs                      # Nodejs demo workspace
 │   ├── package.json            # npm configuration example
 │   └── server.js               # js example hello world
-└── README.md                   # Readme
 
 
 ```
