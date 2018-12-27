@@ -1,0 +1,47 @@
+2018-12-26 23:35:49,160 CRIT Supervisor running as root (no user in config file)
+2018-12-26 23:35:49,161 INFO supervisord started with pid 4974
+2018-12-26 23:35:50,162 INFO spawnerr: can't find command '/usr/sbin/uwsgi'
+2018-12-26 23:35:51,164 INFO spawnerr: can't find command '/usr/sbin/uwsgi'
+2018-12-26 23:35:53,166 INFO spawnerr: can't find command '/usr/sbin/uwsgi'
+2018-12-26 23:35:56,170 INFO spawnerr: can't find command '/usr/sbin/uwsgi'
+2018-12-26 23:35:56,170 INFO gave up: uwsgi entered FATAL state, too many start retries too quickly
+2018-12-26 23:36:09,299 WARN received SIGINT indicating exit request
+2018-12-26 23:38:40,405 CRIT Supervisor running as root (no user in config file)
+2018-12-26 23:38:40,406 INFO supervisord started with pid 4977
+2018-12-26 23:38:41,409 INFO spawned: 'uwsgi' with pid 4980
+2018-12-26 23:38:41,416 INFO exited: uwsgi (exit status 1; not expected)
+2018-12-26 23:38:42,418 INFO spawned: 'uwsgi' with pid 4981
+2018-12-26 23:38:42,426 INFO exited: uwsgi (exit status 1; not expected)
+2018-12-26 23:38:44,429 INFO spawned: 'uwsgi' with pid 4982
+2018-12-26 23:38:44,434 INFO exited: uwsgi (exit status 1; not expected)
+2018-12-26 23:38:47,439 INFO spawned: 'uwsgi' with pid 4983
+2018-12-26 23:38:47,446 INFO exited: uwsgi (exit status 1; not expected)
+2018-12-26 23:38:48,448 INFO gave up: uwsgi entered FATAL state, too many start retries too quickly
+2018-12-26 23:38:48,455 WARN received SIGINT indicating exit request
+2018-12-27 00:31:08,073 CRIT Supervisor running as root (no user in config file)
+2018-12-27 00:31:08,074 INFO supervisord started with pid 5077
+2018-12-27 00:31:09,077 INFO spawned: 'uwsgi' with pid 5080
+2018-12-27 00:31:09,083 INFO exited: uwsgi (exit status 1; not expected)
+2018-12-27 00:31:10,085 INFO spawned: 'uwsgi' with pid 5081
+2018-12-27 00:31:10,092 INFO exited: uwsgi (exit status 1; not expected)
+2018-12-27 00:31:12,096 INFO spawned: 'uwsgi' with pid 5082
+2018-12-27 00:31:12,103 INFO exited: uwsgi (exit status 1; not expected)
+2018-12-27 00:31:12,533 WARN received SIGINT indicating exit request
+2018-12-27 01:13:00,044 CRIT Supervisor running as root (no user in config file)
+2018-12-27 01:13:00,046 INFO supervisord started with pid 5003
+2018-12-27 01:13:01,048 INFO spawned: 'uwsgi' with pid 5006
+2018-12-27 01:13:01,055 INFO exited: uwsgi (exit status 1; not expected)
+2018-12-27 01:13:02,058 INFO spawned: 'uwsgi' with pid 5007
+2018-12-27 01:13:02,065 INFO exited: uwsgi (exit status 1; not expected)
+2018-12-27 01:13:04,068 INFO spawned: 'uwsgi' with pid 5008
+2018-12-27 01:13:04,076 INFO exited: uwsgi (exit status 1; not expected)
+2018-12-27 01:13:06,179 WARN received SIGINT indicating exit request
+2018-12-27 01:15:07,420 CRIT Supervisor running as root (no user in config file)
+2018-12-27 01:15:07,421 INFO supervisord started with pid 5018
+2018-12-27 01:15:08,423 INFO spawned: 'uwsgi' with pid 5021
+2018-12-27 01:15:08,431 INFO exited: uwsgi (exit status 1; not expected)
+2018-12-27 01:15:09,434 INFO spawned: 'uwsgi' with pid 5022
+2018-12-27 01:15:09,441 INFO exited: uwsgi (exit status 1; not expected)
+2018-12-27 01:15:11,445 INFO spawned: 'uwsgi' with pid 5023
+2018-12-27 01:15:11,451 INFO exited: uwsgi (exit status 1; not expected)
+2018-12-27 01:15:12,368 WARN received SIGINT indicating exit request

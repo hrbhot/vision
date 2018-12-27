@@ -1,0 +1,14 @@
+2018-12-27 13:20:04,007 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2018-12-27 13:20:04,008 INFO supervisord started with pid 59
+2018-12-27 13:20:05,011 INFO spawned: 'uwsgi' with pid 61
+2018-12-27 13:20:05,024 INFO exited: uwsgi (exit status 1; not expected)
+2018-12-27 13:20:06,026 INFO spawned: 'uwsgi' with pid 62
+2018-12-27 13:20:06,039 INFO exited: uwsgi (exit status 1; not expected)
+2018-12-27 13:20:07,193 WARN received SIGINT indicating exit request
+2018-12-27 13:21:18,836 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2018-12-27 13:21:18,837 INFO supervisord started with pid 68
+2018-12-27 13:21:19,839 INFO spawned: 'uwsgi' with pid 70
+2018-12-27 13:21:20,853 INFO success: uwsgi entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2018-12-27 13:21:45,184 WARN received SIGINT indicating exit request
+2018-12-27 13:21:45,184 INFO waiting for uwsgi to die
+2018-12-27 13:21:46,186 INFO stopped: uwsgi (exit status 0)

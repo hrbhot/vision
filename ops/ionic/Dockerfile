@@ -1,1 +1,0 @@
-FROM beevelop/ionic:latest
