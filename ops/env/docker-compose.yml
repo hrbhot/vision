@@ -35,11 +35,13 @@ services:
     volumes:
       - ./log/flask:/log:rw
       - ./sock:/sock
-      - ../../backend/demo:/app:rw
+      - ../../backend:/app:rw
     restart: always
     command: |
       sh -c '
-      pip3 install -r /app/requirements.txt
+      virtualenv venv
+      pip install -r /app/requirements.txt
+      export GOOGLE_APPLICATION_CREDENTIALS="j1.json"
       cp /app/uwsgi.ini /etc/uwsgi/uwsgi.ini
       cp /app/supervisord.conf /etc/supervisord.conf
       /usr/bin/supervisord
