@@ -1,0 +1,4 @@
+j1.json
+supervisord.log
+venv/
+__pycache__/
