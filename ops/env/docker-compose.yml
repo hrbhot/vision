@@ -39,8 +39,6 @@ services:
     restart: always
     command: |
       sh -c '
-      virtualenv venv
-      pip install -r /app/requirements.txt
       export GOOGLE_APPLICATION_CREDENTIALS="j1.json"
       cp /app/uwsgi.ini /etc/uwsgi/uwsgi.ini
       cp /app/supervisord.conf /etc/supervisord.conf
