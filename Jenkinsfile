@@ -4,7 +4,7 @@ pipeline {
     stage('Build') {
       steps {
         sh '''echo "Build Stage Starting"
-docker run -d --name=flask -p 5000:5000 flask:0.0.2 bash -c \'tail -f /dev/null\'
+sh ./ops/sh/build.sh 
 echo "Build Stage Finsihed"'''
       }
     }
