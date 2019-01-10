@@ -1,9 +1,10 @@
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Injectable} from '@angular/core';
+import {Injectable, OnDestroy} from '@angular/core';
 import {Camera} from "@ionic-native/camera";
 import {Observable, Subscription} from "rxjs";
 import {VisionResoponse} from "../../shared/VisionResoponse";
 import {ModalController} from "ionic-angular";
+import {ResultPage} from "../../pages/result/result";
 
 /*
   Generated class for the VisionServiceProvider provider.
@@ -12,7 +13,7 @@ import {ModalController} from "ionic-angular";
   and Angular DI.
 */
 @Injectable()
-export class VisionServiceProvider {
+export class VisionServiceProvider implements OnDestroy {
   BASE_URL = "http://service.url/api/"
   DETECT_URL = "detect/"
   subscription: Subscription
@@ -22,16 +23,31 @@ export class VisionServiceProvider {
     this.subscription = new Subscription()
   }
 
+  mockResponse(): Observable<VisionResoponse> {
+    let response = new VisionResoponse()
+    response.mid = "1234"
+    response.description = "Forbidden city"
+
+    return Observable.of(response)
+  }
+
   getVisionInfoByPhoto(imageData: any): Observable<VisionResoponse> {
     let api = this.BASE_URL + this.DETECT_URL
     let httpHeaders = new HttpHeaders({'Content-Type': 'application/json'})
-    return this.http.post(api, imageData, {headers: httpHeaders}) as Observable<VisionResoponse>
+    // return this.http.post(api, imageData, {headers: httpHeaders}) as Observable<VisionResoponse>
+
+    return this.mockResponse()
 
 
   }
 
-  openModal() {
-    let modal = this.modalCtrl.create("ResultPage")
+  openModal(response: VisionResoponse, image: any) {
+    const modal = this.modalCtrl.create(ResultPage,
+      {
+      response: response,
+       image: image
+       }
+    )
     modal.present()
 
   }
@@ -48,14 +64,21 @@ export class VisionServiceProvider {
       let base64Image = 'data:image/jpeg;base64,' + imageData;
 
       let subscription = this.getVisionInfoByPhoto(base64Image).subscribe(response => {
-        this.openModal()
+        console.log(response)
+        console.log(base64Image)
+        this.openModal(response, base64Image)
       });
+      this.subscription.add(subscription)
 
 
     }, error => {
       alert("Error getting image from mobile.")
       console.log("ERROR -> " + JSON.stringify(error));
     });
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe()
   }
 
 }

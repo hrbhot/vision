@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {Component} from '@angular/core';
+import {IonicPage, NavController, NavParams, ViewController} from 'ionic-angular';
+import {Screenshot} from "@ionic-native/screenshot";
+import {VisionResoponse} from "../../shared/VisionResoponse";
 
 /**
  * Generated class for the ResultPage page.
@@ -14,12 +16,33 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'result.html',
 })
 export class ResultPage {
+  image: any
+  response: VisionResoponse
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public viewCtrl: ViewController, public navParams: NavParams, public screenShot: Screenshot) {
+
+
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ResultPage');
+  ionViewWillLoad() {
+    console.log('ionViewWillLoad ResultPage');
+    this.image = this.navParams.get('image')
+    this.response = this.navParams.get('response')
+  }
+
+  savePhoto() {
+    this.screenShot.save("jpg", 100, "myview").then(
+      () => {
+        this.closeModal()
+      },
+      () => {
+        alert("Failed to take a screenshot, you can retry")
+      }
+    );
+  }
+
+  closeModal() {
+    this.viewCtrl.dismiss()
   }
 
 }

@@ -19,4 +19,13 @@
 
 <ion-content padding>
 
+  <ion-card class="myCard">
+    <img [src]="image">
+
+    <div class="myOverlay">
+      <div class="card-title">{{response.description}}</div>
+      <div class="card-subtitle">{{response.mid}}</div>
+    </div>
+  </ion-card>
+
 </ion-content>
