@@ -47,11 +47,20 @@ echo "Unit Tests Finished"'''
       }
     }
     stage('Terminal') {
-      steps {
-        sh '''echo "Terminal Starting"
+      parallel {
+        stage('Terminal') {
+          steps {
+            sh '''echo "Terminal Starting"
 docker stop flask 
 docker rm flask
 echo "THE END"'''
+          }
+        }
+        stage('Send Mail') {
+          steps {
+            emailext(subject: '$DEFAULT_SUBJECT', body: '$DEFAULT_CONTENT', attachLog: true, compressLog: true, postsendScript: '$DEFAULT_POSTSEND_SCRIPT', presendScript: '$DEFAULT_PRESEND_SCRIPT', to: 'hrbhot@gmail.com')
+          }
+        }
       }
     }
   }
