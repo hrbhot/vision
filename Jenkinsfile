@@ -1,6 +1,15 @@
 pipeline {
   agent any
-  stages {
+    stages {
+      stage('Prepare') {
+        steps {
+        sh '''echo "1. Prepare  Stage Starting"
+        checkout scm
+        
+        echo "Build Stage Finsihed"'''
+      }
+    }
+
     stage('Build') {
       steps {
         sh '''echo "Build Stage Starting"
