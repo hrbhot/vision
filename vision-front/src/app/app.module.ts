@@ -1,5 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {ErrorHandler, NgModule} from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, ErrorHandler, NgModule} from '@angular/core';
 import {IonicApp, IonicErrorHandler, IonicModule} from 'ionic-angular';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {StatusBar} from '@ionic-native/status-bar';
@@ -12,6 +12,8 @@ import {Screenshot} from "@ionic-native/screenshot";
 import {ResultPageModule} from "../pages/result/result.module";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {Camera} from "@ionic-native/camera";
+import {VirtualPageModule} from "../pages/virtual/virtual.module";
+import {CameraPreview} from "@ionic-native/camera-preview";
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import {Camera} from "@ionic-native/camera";
     BrowserModule,
     IonicModule.forRoot(MyApp),
     ResultPageModule,
-    HttpClientModule
+    HttpClientModule,
+    VirtualPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -36,8 +39,9 @@ import {Camera} from "@ionic-native/camera";
     VisionServiceProvider,
     Screenshot,
     HttpClient,
-    Camera
-  ]
+    Camera,
+    CameraPreview
+  ],
 })
 export class AppModule {
 }
