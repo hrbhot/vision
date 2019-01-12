@@ -2,7 +2,7 @@
 set -e
 VER=0.0.2
 if [ ! "$(docker ps -q -f name=flask-ut)" ]; then
-    if [ "$(docker ps -aq -f status=exited -f name=flask-ut)" ]; then
+    if [ "$(docker ps -aq -f name=flask-ut)" ]; then
         # cleanup
         docker rm flask-ut
     fi
