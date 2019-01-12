@@ -86,4 +86,5 @@
     <plugin name="com.darktalker.cordova.screenshot" spec="^0.1.6" />
     <plugin name="cordova-plugin-camera-preview" spec="^0.10.0" />
     <engine name="android" spec="7.1.4" />
+    <plugin name="cordova-plugin-advanced-http" spec="2.0.2" />
 </widget>

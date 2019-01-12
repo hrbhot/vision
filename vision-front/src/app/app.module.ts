@@ -14,6 +14,7 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {Camera} from "@ionic-native/camera";
 import {VirtualPageModule} from "../pages/virtual/virtual.module";
 import {CameraPreview} from "@ionic-native/camera-preview";
+import {HTTP} from "@ionic-native/http";
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import {CameraPreview} from "@ionic-native/camera-preview";
     Screenshot,
     HttpClient,
     Camera,
-    CameraPreview
+    CameraPreview,
+    HTTP
   ],
 })
 export class AppModule {

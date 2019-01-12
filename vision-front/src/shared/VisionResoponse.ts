@@ -2,8 +2,11 @@ export class VisionResoponse {
   public mid: String
   public description: String
   public score: number
-  public bounding_poly: Vertices[]
-  public locations: Location
+  public bounding_poly: BoundingPoly
+  public locations: Location[]
+}
+export class BoundingPoly {
+  vertices:Vertices[]
 }
 
 export class Vertices {
@@ -17,5 +20,5 @@ export class Location {
 
 export class Coordinate {
   public latitude: number
-  public ongitude: number
+  public longitude: number
 }

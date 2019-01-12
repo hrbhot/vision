@@ -19,7 +19,7 @@ import {delay} from "rxjs/operator/delay";
   templateUrl: 'virtual.html',
 })
 export class VirtualPage implements OnDestroy {
-  info: VisionResoponse
+  info: VisionResoponse[]
   loop = false
   subscription: Subscription
 
@@ -40,11 +40,10 @@ export class VirtualPage implements OnDestroy {
       async image => {
         console.log("Took picture")
         let base64Image = 'data:image/jpeg;base64,' + image;
-        let sub = this.visionProvider.getVisionInfoByPhoto(base64Image).subscribe(value => {
+        let sub = this.visionProvider.getVisionInfoByPhoto(image).subscribe(value => {
           this.info = value
           console.log("Result", value)
         });
-        this.subscription.add(sub)
       },
       err => {
         console.log("error took picture", err)
@@ -85,7 +84,6 @@ export class VirtualPage implements OnDestroy {
         console.log("continue sendng photo");
         this.cameraPreview.takePicture().then(
           image => {
-            let base64Image = 'data:image/jpeg;base64,' + image;
             this.visionProvider.getVisionInfoByPhoto(image)
           }
         )

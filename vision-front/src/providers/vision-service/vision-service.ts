@@ -1,10 +1,11 @@
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
 import {Injectable, OnDestroy} from '@angular/core';
 import {Camera} from "@ionic-native/camera";
 import {Observable, Subscription} from "rxjs";
 import {VisionResoponse} from "../../shared/VisionResoponse";
 import {ModalController} from "ionic-angular";
 import {ResultPage} from "../../pages/result/result";
+import {HTTP} from "@ionic-native/http";
 
 /*
   Generated class for the VisionServiceProvider provider.
@@ -14,7 +15,8 @@ import {ResultPage} from "../../pages/result/result";
 */
 @Injectable()
 export class VisionServiceProvider implements OnDestroy {
-  BASE_URL = "http://service.url/api/"
+  //BASE_URL = "http://service.url/api/"
+  BASE_URL = "http://163.172.109.219:9001/api/"
   DETECT_URL = "detect/"
   subscription: Subscription
 
@@ -23,20 +25,50 @@ export class VisionServiceProvider implements OnDestroy {
     this.subscription = new Subscription()
   }
 
-  mockResponse(): Observable<VisionResoponse> {
-    let response = new VisionResoponse()
-    response.mid = "1234"
-    response.description = "Forbidden city"
+  mockResponse(): Observable<VisionResoponse[]> {
+    let response: VisionResoponse = {
+      "bounding_poly": {
+        "vertices": [
+          {
+            "x": 357,
+            "y": 61
+          },
+          {
+            "x": 668,
+            "y": 61
+          },
+          {
+            "x": 668,
+            "y": 532
+          },
+          {
+            "x": 357,
+            "y": 532
+          }
+        ]
+      },
+      "description": "Louvre, Mona Lisa",
+      "locations": [
+        {
+          "lat_lng": {
+            "latitude": 48.860423,
+            "longitude": 2.336435
+          }
+        }
+      ],
+      "mid": "/m/04gdr",
+      "score": 0.8157044053077698
+    }
 
-    return Observable.of(response)
+    return Observable.of(Array.of(response))
   }
 
-  getVisionInfoByPhoto(imageData: any): Observable<VisionResoponse> {
+  getVisionInfoByPhoto(imageData: any): Observable<VisionResoponse[]> {
     let api = this.BASE_URL + this.DETECT_URL
     let httpHeaders = new HttpHeaders({'Content-Type': 'application/json'})
-    // return this.http.post(api, imageData, {headers: httpHeaders}) as Observable<VisionResoponse>
+     return this.http.post(api, imageData, {headers: httpHeaders}) as Observable<VisionResoponse[]>
 
-    return this.mockResponse()
+    //return this.mockResponse()
 
 
   }
@@ -44,9 +76,9 @@ export class VisionServiceProvider implements OnDestroy {
   openModal(response: VisionResoponse, image: any) {
     const modal = this.modalCtrl.create(ResultPage,
       {
-      response: response,
-       image: image
-       }
+        response: response,
+        image: image
+      }
     )
     modal.present()
 
@@ -63,10 +95,10 @@ export class VisionServiceProvider implements OnDestroy {
 
       let base64Image = 'data:image/jpeg;base64,' + imageData;
 
-      let subscription = this.getVisionInfoByPhoto(base64Image).subscribe(response => {
+      let subscription = this.getVisionInfoByPhoto(imageData).subscribe(response => {
         console.log(response)
         console.log(base64Image)
-        this.openModal(response, base64Image)
+        this.openModal(response[0], base64Image)
       });
       this.subscription.add(subscription)
 
