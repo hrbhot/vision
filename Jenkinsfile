@@ -48,7 +48,7 @@ echo "Copy Backend Finsihed"'''
       steps {
         sh '''echo "Unit Tests Starting"
 docker exec -d flask-ut bash -c \'export GOOGLE_APPLICATION_CREDENTIALS=$GOOGLE_APPLICATION_CREDENTIALS//app/j1.json && python3 app.py\'
-docker cp ./ops/sh/unittest.sh flask:/app/
+docker cp ./ops/sh/unittest.sh flask-ut:/app/
 docker exec -d flask-ut bash -c \'chmod +x unittest.sh\'
 docker exec -i flask-ut bash -c \'/app/unittest.sh\'
 echo "Unit Tests Finished"'''
