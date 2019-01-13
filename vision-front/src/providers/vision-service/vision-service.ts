@@ -5,7 +5,7 @@ import {Observable, Subscription} from "rxjs";
 import {VisionResoponse} from "../../shared/VisionResoponse";
 import {ModalController} from "ionic-angular";
 import {ResultPage} from "../../pages/result/result";
-import {HTTP} from "@ionic-native/http";
+import {HTTP, HTTPResponse} from "@ionic-native/http";
 
 /*
   Generated class for the VisionServiceProvider provider.
@@ -15,12 +15,13 @@ import {HTTP} from "@ionic-native/http";
 */
 @Injectable()
 export class VisionServiceProvider implements OnDestroy {
-  //BASE_URL = "http://service.url/api/"
-  BASE_URL = "http://163.172.109.219:9001/api/"
+  //BASE_URL = "http://192.168.1.28:5000/api/"
+  BASE_URL = "http://163.172.109.219:5000/api/"
+  //BASE_URL = "https://cors.io/?http://google.com/api/"
   DETECT_URL = "detect/"
   subscription: Subscription
 
-  constructor(public http: HttpClient, public camera: Camera, public modalCtrl: ModalController) {
+  constructor(public httpClient: HttpClient, public http: HTTP, public camera: Camera, public modalCtrl: ModalController) {
     console.log('Hello VisionServiceProvider Provider');
     this.subscription = new Subscription()
   }
@@ -66,7 +67,22 @@ export class VisionServiceProvider implements OnDestroy {
   getVisionInfoByPhoto(imageData: any): Observable<VisionResoponse[]> {
     let api = this.BASE_URL + this.DETECT_URL
     let httpHeaders = new HttpHeaders({'Content-Type': 'application/json'})
-     return this.http.post(api, imageData, {headers: httpHeaders}) as Observable<VisionResoponse[]>
+     //return this.httpClient.post(api, imageData, {headers: httpHeaders}) as Observable<VisionResoponse[]>
+
+    return this.mockResponse()
+
+
+  }
+
+  getVisionInfoByPhoto2(imageData: any): Promise<HTTPResponse> {
+    let api = this.BASE_URL + this.DETECT_URL
+    let data = {"content": imageData}
+    let response = this.http.post(api, data, {'Content-Type': 'application/json'})
+    response.then(response => {
+      console.log(response.data)
+    });
+    return response
+
 
     //return this.mockResponse()
 
@@ -111,6 +127,31 @@ export class VisionServiceProvider implements OnDestroy {
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe()
+  }
+
+  selectPhotoByType2(type: number): void { // type = 0 choose a picture, type = 1 use camera
+    this.camera.getPicture({
+      sourceType: type,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      quality: 100,
+      encodingType: this.camera.EncodingType.JPEG,
+      correctOrientation: true
+    }).then(imageData => {
+
+      let base64Image = 'data:image/jpeg;base64,' + imageData;
+
+      this.getVisionInfoByPhoto2(imageData).then(response => {
+        console.log(response)
+        console.log(base64Image)
+        let info = response.data as VisionResoponse[]
+        this.openModal(info[0], base64Image)
+      });
+
+
+    }, error => {
+      alert("Error getting image from mobile.")
+      console.log("ERROR -> " + JSON.stringify(error));
+    });
   }
 
 }
