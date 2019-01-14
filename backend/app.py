@@ -19,7 +19,6 @@ def detect():
     image_string = data['content']
     resp_data = googleCloud.landmark_detection(image_string)
     json_data = jsonify(resp_data)
-    # print(type(resp_data))
     return json_data
 
 
