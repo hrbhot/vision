@@ -67,9 +67,9 @@ export class VisionServiceProvider implements OnDestroy {
   getVisionInfoByPhoto(imageData: any): Observable<VisionResoponse[]> {
     let api = this.BASE_URL + this.DETECT_URL
     let httpHeaders = new HttpHeaders({'Content-Type': 'application/json'})
-     //return this.httpClient.post(api, imageData, {headers: httpHeaders}) as Observable<VisionResoponse[]>
+     return this.httpClient.post(api, imageData, {headers: httpHeaders}) as Observable<VisionResoponse[]>
 
-    return this.mockResponse()
+    //return this.mockResponse()
 
 
   }
