@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_assets import Environment
 from flask_cors import CORS
+from flask_cors import cross_origin
 import logging
 
 import googleCloud
@@ -14,6 +15,7 @@ logging.getLogger('flask_cors').level = logging.DEBUG
 
 
 @app.route("/api/detect", methods=['POST'])
+@cross_origin(origin='*',headers=['Content-Type','Authorization'])
 def detect():
     data = request.json
     image_string = data['content']

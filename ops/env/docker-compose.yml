@@ -43,6 +43,7 @@ services:
       cp /app/uwsgi.ini /etc/uwsgi/uwsgi.ini
       cp /app/supervisord.conf /etc/supervisord.conf
       /usr/bin/supervisord
+      entrypoint.sh
       tail -f /dev/null'
  
   mongodb:
