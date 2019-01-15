@@ -7,5 +7,5 @@ if [ ! "$(docker ps -q -f name=flask-ut)" ]; then
         docker rm flask-ut
     fi
     # run your container
-    docker run -d --name=flask-ut -p 5000:5000 hrbhot/flask:$VER bash -c 'tail -f /dev/null'
+    docker run -d --name=flask-ut -p 5001:5000 hrbhot/flask:$VER bash -c 'tail -f /dev/null'
 fi
