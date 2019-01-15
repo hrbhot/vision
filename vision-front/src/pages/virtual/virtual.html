@@ -1,0 +1,25 @@
+<!--
+  Generated template for the VirtualPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>virtual</ion-title>
+    <ion-buttons end="">
+      <button *ngIf="!loop" ion-button (click)="firstPicture()">Get infos</button>
+      <button *ngIf="loop" ion-button (click)="stopGetting()">Stop</button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content *ngIf="info" padding>
+  <div class="myOverlay">
+    <div class="card-title">{{info[0].description}}</div>
+    <div class="card-subtitle">{{info[0].mid}}</div>
+  </div>
+</ion-content>

@@ -23,4 +23,3 @@ RUN set -e && \
     virtualenv venv && \
     addgroup -S www && \
     adduser -D -S -h /home/www -s /sbin/nologin -G www www \
-

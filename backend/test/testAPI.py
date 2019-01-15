@@ -2,7 +2,7 @@ import requests
 import base64
 import json
 
-url = "http://localhost:5000"
+url = "http://localhost:9001"
 
 
 def check_detect(data):

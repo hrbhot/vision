@@ -15,13 +15,12 @@ logging.getLogger('flask_cors').level = logging.DEBUG
 
 
 @app.route("/api/detect", methods=['POST'])
-@cross_origin(origin='*',headers=['Content-Type','Authorization'])
+@cross_origin(allow_headers=['Content-Type'])
 def detect():
     data = request.json
     image_string = data['content']
     resp_data = googleCloud.landmark_detection(image_string)
     json_data = jsonify(resp_data)
-    # print(type(resp_data))
     return json_data
 
 

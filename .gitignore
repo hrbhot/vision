@@ -1,4 +1,15 @@
+**/.idea/
 # linux
 .*.swp
 env/jenkins/**
 bak/
+backend/j1.json
+# backend
+backend/supervisord.log
+*.pyc
+backend/venv/
+backend/__pycache__/
+ops/env/mongo/
+ops/env/log/
+ops/env/sock/
+

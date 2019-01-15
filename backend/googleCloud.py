@@ -14,5 +14,9 @@ def landmark_detection(image_string):
     response = client.landmark_detection(image=image)
     resp_json = MessageToJson(response, preserving_proto_field_name=True)
     json_data = json.loads(resp_json)
-    landmarks = json_data["landmark_annotations"]
+    try:
+        landmarks = json_data["landmark_annotations"]
+    except KeyError as e:
+        print(e)
+        landmarks = {}
     return landmarks
