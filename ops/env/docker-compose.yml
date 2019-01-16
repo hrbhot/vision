@@ -42,8 +42,8 @@ services:
       export GOOGLE_APPLICATION_CREDENTIALS="j1.json"
       cp /app/uwsgi.ini /etc/uwsgi/uwsgi.ini
       cp /app/supervisord.conf /etc/supervisord.conf
+      /app/entrypoint.sh
       /usr/bin/supervisord
-      entrypoint.sh
       tail -f /dev/null'
  
   mongodb:
