@@ -73,6 +73,7 @@ services:
          - ./log/nodejs/:/log:rw
        command: |
          sh -c '
+         clean.sh
          npm install -g ionic cordova
          npm install
          npm audit fix
