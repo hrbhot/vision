@@ -69,8 +69,16 @@ services:
        networks:
          - npm_net
        volumes:
-         - ./nodejs:/nodejs:rw
+         - ../../vision-front:/nodejs:rw  
          - ./log/nodejs/:/log:rw
+       command: |
+         sh -c '
+         npm install -g ionic cordova
+         npm install
+         npm audit fix
+         ionic cordova platform add android
+         tail -f /dev/null'
+
 networks:
   npm_net:
 
