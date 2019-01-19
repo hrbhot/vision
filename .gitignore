@@ -1,15 +1,46 @@
+**/.DS_Store
 **/.idea/
 # linux
 .*.swp
 env/jenkins/**
 bak/
-backend/j1.json
+j1.json
 # backend
-backend/supervisord.log
+supervisord.log
 *.pyc
-backend/venv/
-backend/__pycache__/
-ops/env/mongo/
-ops/env/log/
-ops/env/sock/
+venv
+__pycache__/
 
+# Specifies intentionally untracked files to ignore when using Git
+# http://git-scm.com/docs/gitignore
+
+*~
+*.sw[mnpcod]
+*.log
+*.tmp
+*.tmp.*
+log.txt
+*.sublime-project
+*.sublime-workspace
+.vscode/
+npm-debug.log*
+
+.ionic/
+.sourcemaps/
+.sass-cache/
+.tmp/
+.versions/
+coverage/
+dist/
+node_modules/
+tmp/
+temp/
+platforms/
+plugins/
+plugins/android.json
+plugins/ios.json
+www/
+$RECYCLE.BIN/
+
+Thumbs.db
+UserInterfaceState.xcuserstate

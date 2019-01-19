@@ -178,3 +178,25 @@ Searching from google to get the related images for future training.
 ##### Download (need 'Generate' to be execute)
 
 Download images to local.
+
+----
+## Front-end
+
+### Prepare
+Gradle is not necessary is recommended to install the latest version
+
+### Android
+Android studio and its licenses are not essential to run the application if you have had and android telephone.
+
+**How ever android sdk is needed**
+
+The android version of the phone is better to be higher than Android 5. 
+
+
+### Node environment
+1. Install NodeJs
+2. Run `npm install -g ionic cordova` to install ionic3 and cordova
+3. At the directory of projedt run `npm install`
+4. Run `ionic cordova platform add android` to build android project
+5. Connect phone to pc and change phone to devlop mode.
+6. Run `ionic cordova run android` to build an apk and run on the phone.
